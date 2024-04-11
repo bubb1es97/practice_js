@@ -14,38 +14,76 @@ function caseSensitive(word){
    let capitalizedWord = firstLetterCap + remainingLetters; // adds first letter of word and remaining letters together
    return capitalizedWord;
 }
-// create a function that plays a single round of Rock Paper 
+// create a function named "playRound" that plays a single round of Rock Paper 
 // Scissors.
 // two parameters - the playerSelection and computerSelection
 // return a string that declares the winner or tie of the round
-const playerSelection = caseSensitive("rock"); // attached caseSensitive function here bc it was not activating in playRound function
-const computerSelection = getComputerChoice();
 
-function playRound(playerSelection, computerSelection){
+// function playRound(playerSelection){
+//     // caseSensitive(playerSelection); --> Idk why, but playerSelection is not filtering through this function.
+//    // console.log(computerSelection);
+//     computerSelection = getComputerChoice();
    
+//    if (playerSelection === 'Paper' && computerSelection === 'Rock'){
+//       return 'You Win! Paper beats Rock.'
+//    } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
+//       return 'You Win! Scissors beats Paper.'
+//    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){  
+//          return 'You Win! Rock beats Scissors.'
+//    } else if (computerSelection === 'Paper' && playerSelection === 'Rock'){
+//       return 'You Lose! Paper beats Rock.'
+//    } else if (computerSelection === 'Scissors' && playerSelection === 'Paper'){
+//       return 'You Lose! Scissors beats Paper.'
+//    } else if (computerSelection === 'Rock' && playerSelection === 'Scissors'){
+//       return 'You Lose! Rock beats Scissors.'
+//    }
+//    else return `It's A Tie!`;
+// }
+const playerSelection = caseSensitive("paper"); // attached caseSensitive function here bc it was not activating in playRound function
+// const computerSelection = getComputerChoice(); // --> this is where the getComputerChoice breaks
+
+//  console.log(playRound(playerSelection));
+
+
+
+function playRound(playerSelection){
    // caseSensitive(playerSelection); --> Idk why, but playerSelection is not filtering through this function.
-   
-   if (playerSelection === 'Paper' && computerSelection === 'Rock'){
-      return 'You Win! Paper beats Rock.'
-   } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
-      return 'You Win! Scissors beats Paper.'
-   } else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){  
-         return 'You Win! Rock beats Scissors.'
-   } else if (computerSelection === 'Paper' && playerSelection === 'Rock'){
-      return 'You Lose! Paper beats Rock.'
-   } else if (computerSelection === 'Scissors' && playerSelection === 'Paper'){
-      return 'You Lose! Scissors beats Paper.'
-   } else if (computerSelection === 'Rock' && playerSelection === 'Scissors'){
-      return 'You Lose! Rock beats Scissors.'
+  // console.log(computerSelection);
+   // computerSelection = getComputerChoice();
+  let userScore = 0;
+  let comScore = 0;
+  for(i = 0; i < 5; i++){
+      if (playerSelection === 'Paper' && getComputerChoice() === 'Rock'){
+     console.log('You Win! Paper beats Rock.');
+     console.log(userScore += 1);
+      } else if (playerSelection === 'Scissors' && getComputerChoice() === 'Paper'){
+     console.log('You Win! Scissors beats Paper.');
+     console.log(userScore += 1);
+      } else if (playerSelection === 'Rock' && getComputerChoice() === 'Scissors'){  
+        console.log('You Win! Rock beats Scissors.');
+        console.log(userScore += 1)
+      } else if (getComputerChoice() === 'Paper' && playerSelection === 'Rock'){
+     console.log('You Lose! Paper beats Rock.');
+     console.log(comScore += 1);
+      } else if (getComputerChoice() === 'Scissors' && playerSelection === 'Paper'){
+     console.log('You Lose! Scissors beats Paper.');
+     console.log(comScore += 1);
+      } else if (getComputerChoice() === 'Rock' && playerSelection === 'Scissors'){
+     console.log('You Lose! Rock beats Scissors.')
+     console.log(comScore += 1);
+      }
+      else console.log(`It's A Tie!`);
    }
-   
-   else return `It's A Tie!`;
+     
+   if(comScore > userScore){
+      console.log('YOU LOST')
+   } else if (userScore > comScore){
+      console.log('CONGRATS YOU WON!')
+   }else if(userScore === comScore){
+      console.log('DRAW!');
+   }
 }
- 
-//  console.log(playRound(playerSelection, computerSelection));
- 
-
-
+(playRound(playerSelection));
 
 //Write a NEW function called playGame(). Use the previous function inside 
 // of this one to play a five round game that keeps score and reports a 
@@ -55,58 +93,83 @@ function playGame(){
    let userScore = 0;
    let comScore = 0;
    for (let i = 0; i < 5; i++){
-      if(playRound(playerSelection, computerSelection) === 'You Win! Paper beats Rock.' 
-         || playRound(playerSelection, computerSelection) === 'You Win! Scissors beats Paper.'
-         || playRound(playerSelection, computerSelection) === 'You Win! Rock beats Scissors.') {
-            userScore += 1;
-      }else if(playRound(playerSelection, computerSelection) === 'You Lose! Paper beats Rock.'
-         || playRound(playerSelection, computerSelection) === 'You Lose! Scissors beats Paper.'
-         || playRound(playerSelection, computerSelection) === 'You Lose! Rock beats Scissors.'){
-            comScore += 1;}
-
-      // console.log(playRound(playerSelection, computerSelection));
-      console.log(userScore + ' userScore');
-      console.log(comScore + ' comScore');
+      if (playerSelection === 'Paper' && computerSelection === 'Rock'){
+         console.log('You Win! Paper beats Rock.');
+         console.log(userScore += 1);
+      } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
+         console.log('You Win! Scissors beats Paper.');
+         console.log(userScore += 1);
+      } else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){  
+            console.log('You Win! Rock beats Scissors.');
+            console.log(userScore += 1)
+      } else if (computerSelection === 'Paper' && playerSelection === 'Rock'){
+         console.log('You Lose! Paper beats Rock.');
+         console.log(comScore += 1);
+      } else if (computerSelection === 'Scissors' && playerSelection === 'Paper'){
+         console.log('You Lose! Scissors beats Paper.');
+         console.log(comScore += 1);
+      } else if (computerSelection === 'Rock' && playerSelection === 'Scissors'){
+         console.log('You Lose! Rock beats Scissors.')
+         console.log(comScore += 1);
+      }
+      else console.log(`It's A Tie!`);
    }
- 
+   
+
   
-   if(comScore > userScore){
-      console.log('YOU LOST')
-   } else if (userScore > comScore){
-      console.log('CONGRATS YOU WIN!')
-   }else console.log(`It's a Tie!`);
+   // if(comScore > userScore){
+   //    console.log('YOU LOST')
+   // } else if (userScore > comScore){
+   //    console.log('CONGRATS YOU WON!')
+   // }else if(userScore === comScore){
+   //    console.log('DRAW!');
+   // }
+}
+
+// playGame();
+
+
+
+
+
+
+// keepScore was my "dummy" function I bounced different syntax off of.
+function keepScore(){
+   for (let i = 0; i < 5; i++){
+    console.log(playRound(playerSelection));
+   }
+   
+  
+   // if(comScore > userScore){
+   //    console.log('YOU LOST')
+   // } else if (userScore > comScore){
+   //    console.log('CONGRATS YOU WIN!')
+   // }else {console.log(`It's a Tie!`);
+   // }
+}
+// keepScore();
+
+function trackScore(){
+   
 
 }
 
-playGame();
+// trackScore();
 
 
-
-
-
-// function keepScore(){
-//    let userScore = 0;
+// function trackScore(){
+//    i = 0;
 //    let comScore = 0;
-//    for (let i = 0; i < 5; i++){
-//       if(playRound(playerSelection, computerSelection) === 'You Win! Paper beats Rock.' 
-//          || playRound(playerSelection, computerSelection) === 'You Win! Scissors beats Paper.'
-//          || playRound(playerSelection, computerSelection) === 'You Win! Rock beats Scissors.') {
-//             userScore += 1;
-//       }else if(playRound(playerSelection, computerSelection) === 'You Lose! Paper beats Rock.'
-//          || playRound(playerSelection, computerSelection) === 'You Lose! Scissors beats Paper.'
-//          || playRound(playerSelection, computerSelection) === 'You Lose! Rock beats Scissors.'){
-//             comScore += 1;}
-
-//       console.log(playRound(playerSelection, computerSelection));
-//       console.log(userScore + ' userScore');
-//       console.log(comScore + ' comScore');
-//    }
- 
-  
-//    if(comScore === 5){
-//       console.log('YOU LOST')
-//    } else if (userScore === 5){
-//       console.log('CONGRATS YOU WIN!')
+//    let userScore = 0;
+//    let a = 0;
+//    while (i < 5) {
+//       console.log(playRound(playerSelection));
+//       i++
 //    }
 // }
-// keepScore();
+// trackScore()
+
+// i = 0;
+// while (i < 5) {
+//    console.log(playRound(playerSelection, computerSelection));
+//    i++;}
