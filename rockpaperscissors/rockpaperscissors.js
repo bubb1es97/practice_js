@@ -15,6 +15,10 @@ function caseSensitive(word){
 // two parameters - the playerSelection and computerSelection
 // return a string that declares the winner or tie of the round
 
+function sleep(ms) {
+   return new Promise(resolve => setTimeout(resolve, ms));
+ }
+
 function playRound(userScore, comScore){
     const computerSelection = getComputerChoice();
     const playerSelection = caseSensitive(prompt('Please choose rock, paper or scissors'));
@@ -48,11 +52,12 @@ function playRound(userScore, comScore){
 // I realize the playGame function is basically the playRound function with a loop added
 // It was my best attempt to add score and create a five round game with the console.
 
-function playGame(){
+async function playGame(){
    let userScore = 0;
    let comScore = 0;
    for(i = 0; i < 5; i++){
       playRound(userScore, comScore);
+      await sleep(2000)
    }
       
     if(comScore > userScore){
