@@ -15,27 +15,30 @@ function caseSensitive(word){
 // two parameters - the playerSelection and computerSelection
 // return a string that declares the winner or tie of the round
 
-function playRound(playerSelection){
-    // caseSensitive(playerSelection); --> Idk why, but playerSelection is not filtering through the caseSensitive function.
-   // console.log(computerSelection);
-    computerSelection = getComputerChoice();
-   
-   if (playerSelection === 'Paper' && computerSelection === 'Rock'){
-      return 'You Win! Paper beats Rock.'
-   } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
-      return 'You Win! Scissors beats Paper.'
-   } else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){  
-         return 'You Win! Rock beats Scissors.'
-   } else if (computerSelection === 'Paper' && playerSelection === 'Rock'){
-      return 'You Lose! Paper beats Rock.'
-   } else if (computerSelection === 'Scissors' && playerSelection === 'Paper'){
-      return 'You Lose! Scissors beats Paper.'
-   } else if (computerSelection === 'Rock' && playerSelection === 'Scissors'){
-      return 'You Lose! Rock beats Scissors.'
-   }
-   else return `It's A Tie!`;
+function playRound(userScore, comScore){
+    const computerSelection = getComputerChoice();
+    const playerSelection = caseSensitive(prompt('Please choose rock, paper or scissors'));
+    if (playerSelection === 'Paper' && computerSelection === 'Rock'){
+      console.log('You Win! Paper beats Rock.');
+      console.log(userScore += 1);
+       } else if (playerSelection === 'Scissors' && computerSelection === 'Paper'){
+      console.log('You Win! Scissors beats Paper.');
+      console.log(userScore += 1);
+       } else if (playerSelection === 'Rock' && computerSelection === 'Scissors'){  
+         console.log('You Win! Rock beats Scissors.');
+         console.log(userScore += 1)
+       } else if (computerSelection === 'Paper' && playerSelection === 'Rock'){
+      console.log('You Lose! Paper beats Rock.');
+      console.log(comScore += 1);
+       } else if (computerSelection === 'Scissors' && playerSelection === 'Paper'){
+      console.log('You Lose! Scissors beats Paper.');
+      console.log(comScore += 1);
+       } else if (computerSelection === 'Rock' && playerSelection === 'Scissors'){
+      console.log('You Lose! Rock beats Scissors.')
+      console.log(comScore += 1);
+       }
+       else console.log(`It's A Tie!`);
 }
-const playerSelection = caseSensitive(prompt('Please choose rock, paper or scissors')); // attached caseSensitive function here bc it was not activating in playRound function
 // const computerSelection = getComputerChoice(); // --> this is where the getComputerChoice breaks
 
 
@@ -49,28 +52,8 @@ function playGame(){
    let userScore = 0;
    let comScore = 0;
    for(i = 0; i < 5; i++){
-      const playerSelection = caseSensitive(prompt('Please choose rock, paper or scissors'));
-       if (playerSelection === 'Paper' && getComputerChoice() === 'Rock'){
-      console.log('You Win! Paper beats Rock.');
-      console.log(userScore += 1);
-       } else if (playerSelection === 'Scissors' && getComputerChoice() === 'Paper'){
-      console.log('You Win! Scissors beats Paper.');
-      console.log(userScore += 1);
-       } else if (playerSelection === 'Rock' && getComputerChoice() === 'Scissors'){  
-         console.log('You Win! Rock beats Scissors.');
-         console.log(userScore += 1)
-       } else if (getComputerChoice() === 'Paper' && playerSelection === 'Rock'){
-      console.log('You Lose! Paper beats Rock.');
-      console.log(comScore += 1);
-       } else if (getComputerChoice() === 'Scissors' && playerSelection === 'Paper'){
-      console.log('You Lose! Scissors beats Paper.');
-      console.log(comScore += 1);
-       } else if (getComputerChoice() === 'Rock' && playerSelection === 'Scissors'){
-      console.log('You Lose! Rock beats Scissors.')
-      console.log(comScore += 1);
-       }
-       else console.log(`It's A Tie!`);
-    }
+      playRound(userScore, comScore);
+   }
       
     if(comScore > userScore){
        console.log('YOU LOST! GAME OVER')
