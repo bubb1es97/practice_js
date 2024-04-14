@@ -16,7 +16,7 @@ function caseSensitive(word){
 // return a string that declares the winner or tie of the round
 
 function playRound(playerSelection){
-    // caseSensitive(playerSelection); --> Idk why, but playerSelection is not filtering through this function.
+    // caseSensitive(playerSelection); --> Idk why, but playerSelection is not filtering through the caseSensitive function.
    // console.log(computerSelection);
     computerSelection = getComputerChoice();
    
@@ -49,6 +49,7 @@ function playGame(){
    let userScore = 0;
    let comScore = 0;
    for(i = 0; i < 5; i++){
+      const playerSelection = caseSensitive(prompt('Please choose rock, paper or scissors'));
        if (playerSelection === 'Paper' && getComputerChoice() === 'Rock'){
       console.log('You Win! Paper beats Rock.');
       console.log(userScore += 1);
